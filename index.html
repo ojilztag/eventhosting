@@ -436,6 +436,19 @@
       .cta a[href^="https://wa.me/"]{min-width:250px}
     }
 
+
+    /* Small mobile-only scroll-to-top control; intentionally not circular */
+    .mobile-top-button{display:none}
+    @media(max-width:700px){
+      .mobile-top-button{
+        display:inline-flex;position:fixed;right:12px;bottom:16px;z-index:50;
+        align-items:center;justify-content:center;gap:5px;
+        padding:8px 10px;border:1px solid #54729e;border-radius:8px;
+        background:#10264a;color:#fff;font-size:.78rem;font-weight:800;
+        line-height:1;box-shadow:0 5px 18px #0005;opacity:.94;
+      }
+      .mobile-top-button:active{transform:translateY(1px)}
+    }
   </style>
 </head>
 <body>
@@ -626,6 +639,10 @@
           <details><summary>Are registration forms customized for each event?</summary><p>Yes. Registration forms are our own website-integrated forms, customized according to the event requirements. The form fields, submission workflow, and data destination are agreed during setup and depend on the selected package.</p></details>
           <details><summary>Does every package include online payment?</summary><p>No. Payment gateway integration is not implied by the listed starting packages. It must be requested, scoped, and quoted separately.</p></details>
           <details><summary>Are the listed prices final?</summary><p>They are starting prices, not guaranteed final quotes. Final pricing depends on requirements and is confirmed before payment.</p></details>
+          <details><summary>How long does an event website take to launch?</summary><p>Delivery time depends on the agreed pages, form fields, integrations, content readiness, and review cycle. The target timeline will be confirmed in the project proposal before work begins.</p></details>
+          <details><summary>Who owns the event content and registration data?</summary><p>Your organization retains ownership of the content and event data it provides. Data access, export format, storage destination, and handover arrangements will be agreed before setup.</p></details>
+          <details><summary>Does the package include ongoing maintenance and support?</summary><p>Ongoing maintenance, updates, support duration, and response expectations are not automatically included unless listed in the confirmed project scope.</p></details>
+          <details><summary>What happens if we need extra features?</summary><p>Additional pages, fields, integrations, automation, or changes beyond the agreed scope can be reviewed and quoted separately before implementation.</p></details>
         </div>
       </div>
     </section>
@@ -673,6 +690,10 @@
       }));
     }
     updatePreview();
+    const mobileTopButton = $('mobileTopButton');
+    if (mobileTopButton) {
+      mobileTopButton.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+    }
   </script>
 <script>
   const sampleRegistration = document.getElementById('sampleRegistration');
@@ -696,5 +717,6 @@
   }
 </script>
 
+  <button class="mobile-top-button" id="mobileTopButton" type="button" aria-label="Scroll to top"><span aria-hidden="true">↑</span> Top</button>
 </body>
 </html>
