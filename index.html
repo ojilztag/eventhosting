@@ -392,6 +392,50 @@
       .grid.pricing>.card .price{font-size:2.2rem}
     }
 
+  
+    /* Desktop-only finish: preserve mobile layout and touch behavior */
+    @media(min-width:901px){
+      .wrap{width:min(1240px,92%)}
+      .topbar{box-shadow:0 8px 28px #0002}
+      .nav{gap:24px}
+      .navlinks{flex-wrap:wrap;justify-content:flex-end}
+      .navlinks a{padding:8px 0;white-space:nowrap}
+      .navlinks a:last-child{padding:10px 16px;border:1px solid #365b83;border-radius:999px;background:#10264a}
+      .hero{grid-template-columns:minmax(0,1.04fr) minmax(420px,.96fr);gap:clamp(36px,4vw,64px)}
+      .hero>div:first-child{min-width:0}
+      .hero-visual{min-width:0}
+      .browser{transform:none}
+      .site-preview{min-height:390px}
+      .section-head{max-width:850px}
+      .grid{align-items:stretch}
+      .grid>.card{height:100%}
+      .grid.pricing{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .grid.pricing>.card{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:30px}
+      .grid.pricing>.card .pill{align-self:flex-start;margin:0 0 18px}
+      .grid.pricing>.card h3{min-height:0;margin:0 0 10px}
+      .grid.pricing>.card .price{margin:4px 0 18px}
+      .grid.pricing>.card ul{margin:0 0 26px;flex:1;line-height:1.65}
+      .grid.pricing>.card .btn{align-self:stretch;margin-top:auto;white-space:normal}
+      #packages>.wrap>.grid:not(.pricing){grid-template-columns:repeat(2,minmax(0,1fr))}
+      #packages>.wrap>.grid:not(.pricing)>.card{min-height:0}
+      a[href^="https://wa.me/"]{
+        display:inline-flex;align-items:center;justify-content:center;gap:10px;
+        min-height:48px;padding:12px 22px;border-radius:999px;
+        color:#fff;background:linear-gradient(135deg,#20b968,#128c50);
+        border:1px solid #43d486;font-weight:850;letter-spacing:.01em;
+        box-shadow:0 8px 22px #12a05a2b;white-space:normal;text-align:center;
+        transition:transform .2s ease,box-shadow .2s ease,filter .2s ease
+      }
+      a[href^="https://wa.me/"]:before{
+        content:"";width:20px;height:20px;flex:0 0 20px;
+        background-repeat:no-repeat;background-position:center;background-size:contain;
+        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M20.52 3.48A11.8 11.8 0 0 0 12.1 0C5.56 0 .24 5.32.24 11.86c0 2.09.55 4.13 1.6 5.93L0 24l6.38-1.67a11.84 11.84 0 0 0 5.72 1.46h.01c6.54 0 11.86-5.32 11.86-11.86 0-3.17-1.23-6.15-3.45-8.45ZM12.1 21.77h-.01a9.85 9.85 0 0 1-5.02-1.37l-.36-.21-3.79.99 1.01-3.69-.23-.38a9.85 9.85 0 0 1-1.51-5.25c0-5.46 4.45-9.91 9.92-9.91 2.65 0 5.14 1.03 7.01 2.91a9.85 9.85 0 0 1 2.9 7c0 5.47-4.45 9.91-9.92 9.91Zm5.44-7.42c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.45.3-1.17 1.42-1.75 1.72-.2.3-.4.33-.7.05-.3-.27-1.12-1.32-1.54-1.54-.22-.12-.5-.75-.7-.9-.2-.15-.4-.17-.6.17-.2.35-.77.95-.95 1.15-.17.2-.35.22-.65.07-.95-.15-1.42-.52-2.63-1.65-.97-.9-.32-.55-.55-1.22-.55-1.9 0-.67.35-1.02.47-1.17.12-.15.27-.2.45-.2h.32c.15 0 .35-.05.52.4.2.47.67 1.62.72 1.75.07.12.07.27.02.42-.05.15-.1.27-.2.4-.1.12-.2.27-.3.37-.1.1-.2.22-.07.42.12.2.55.9 1.2 1.45.82.72 1.52.95 1.72 1.05.2.1.32.07.45-.07.12-.15.52-.6.67-.8.15-.2.3-.17.5-.1.2.07 1.27.6 1.5.72.22.12.37.17.42.27.05.1.05.57-.15 1.12-.2.55-1.15 1.07-1.6 1.15-.42.07-.95.1-1.52-.07-.35-.1-.8-.25-1.37-.5Z'/%3E%3C/svg%3E")
+      }
+      a[href^="https://wa.me/"]:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 12px 28px #12a05a40}
+      a[href^="https://wa.me/"]:focus-visible{outline:3px solid #a7f3d0;outline-offset:3px}
+      .cta a[href^="https://wa.me/"]{min-width:250px}
+    }
+
   </style>
 </head>
 <body>
@@ -606,33 +650,30 @@
   <script>
     const $ = id => document.getElementById(id);
     function updatePreview(){
+      const fields = ['eventName','orgName','eventType','eventDescription','featureList'];
+      if (!fields.every(id => $(id))) return;
       const name = $('eventName').value.trim() || 'Your Event';
       const org = $('orgName').value.trim() || 'Your Organization';
       const type = $('eventType').value;
       const desc = $('eventDescription').value.trim() || 'A digital home for your event.';
       const features = $('featureList').value.trim() || 'Custom event features';
-      $('previewTitle').textContent = name;
-      $('previewOrg').textContent = org;
-      $('previewType').textContent = type;
-      $('previewDesc').textContent = desc;
-      $('previewFeatures').textContent = features;
-      $('visualHosting').textContent = org.toUpperCase();
-      $('visualTitle').textContent = name;
-      $('visualDesc').textContent = desc;
+      [['previewTitle',name],['previewOrg',org],['previewType',type],['previewDesc',desc],['previewFeatures',features],['visualHosting',org.toUpperCase()],['visualTitle',name],['visualDesc',desc]].forEach(([id,value]) => { if ($(id)) $(id).textContent=value; });
     }
-    $('applyPreview').addEventListener('click', updatePreview);
-    ['eventName','eventType','orgName','eventDescription','featureList'].forEach(id => $(id).addEventListener('input', updatePreview));
+    const applyPreview = $('applyPreview');
+    if (applyPreview) applyPreview.addEventListener('click', updatePreview);
+    ['eventName','eventType','orgName','eventDescription','featureList'].forEach(id => { if ($(id)) $(id).addEventListener('input', updatePreview); });
     const menuBtn = $('menuBtn'), nav = $('navlinks');
-    menuBtn.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', String(open));
-    });
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false');
-    }));
+    if (menuBtn && nav) {
+      menuBtn.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(open));
+      });
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false');
+      }));
+    }
     updatePreview();
   </script>
-
 <script>
   const sampleRegistration = document.getElementById('sampleRegistration');
   if (sampleRegistration) {
