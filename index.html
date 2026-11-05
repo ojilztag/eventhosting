@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OJILZTAG.COM offers a configurable event management and digitalization platform for organizations, communities, teams, and event organizers.">
+  <meta name="theme-color" content="#071329">
+  <title>OJILZTAG.COM | MYEVENT HOSTING | Digital Event Hosting & Management</title>
+  <style>
+    :root{
+      --bg:#071329;--panel:#101f3e;--panel2:#13294d;--ink:#f7f9ff;--muted:#b9c6df;
+      --cyan:#57e3ef;--pink:#f46ab5;--gold:#ffd66b;--line:#29436b;--green:#9cf0c1;
+      --radius:22px;--max:1180px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(ellipse at 12% 0%,#34215e 0,transparent 34%),radial-gradient(ellipse at 90% 25%,#123e67 0,transparent 30%),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    .wrap{width:min(var(--max),92%);margin-inline:auto}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(7,19,41,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(92,128,180,.25)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:76px}
+    .brand{font-weight:900;letter-spacing:.04em;font-size:1.08rem;white-space:nowrap}
+    .brand span{color:var(--cyan)}
+    .navlinks{display:flex;align-items:center;gap:22px;color:#d2def4;font-size:.94rem}
+    .navlinks a:hover{color:var(--cyan)}
+    .menu-btn{display:none;background:transparent;border:1px solid var(--line);color:white;border-radius:10px;padding:8px 12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 19px;border-radius:999px;border:1px solid transparent;font-weight:800;cursor:pointer;transition:transform .18s ease,opacity .18s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(100deg,var(--pink),#7c5cff);color:#fff;box-shadow:0 10px 30px #7c3aed35}
+    .btn-secondary{border-color:#54729e;background:#10264a;color:#fff}
+    .btn-small{padding:9px 14px;font-size:.9rem}
+    .hero{padding:78px 0 56px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--gold);font-weight:850;font-size:.78rem;text-transform:uppercase;letter-spacing:.14em}
+    .eyebrow:before{content:"";width:22px;height:2px;background:var(--gold)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(2.7rem,6vw,5.3rem);line-height:1.02;letter-spacing:-.045em;margin:18px 0}
+    h1 em{font-style:normal;color:var(--cyan)}
+    .lead{font-size:1.12rem;color:var(--muted);max-width:650px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0}
+    .trustline{display:flex;gap:18px;flex-wrap:wrap;color:#c4d2e9;font-size:.9rem}
+    .trustline span:before{content:"✓";color:var(--green);font-weight:900;margin-right:7px}
+    .hero-visual{position:relative}
+    .glow{position:absolute;inset:12% 5%;background:linear-gradient(135deg,#ec489944,#22d3ee33);filter:blur(45px);z-index:-1}
+    .browser{border:1px solid #45628d;background:#0d1b37;border-radius:24px;overflow:hidden;box-shadow:0 30px 90px #0005;transform:rotate(1deg)}
+    .browser-top{display:flex;align-items:center;gap:7px;padding:13px 17px;border-bottom:1px solid #263b60;color:#aabbd8;font-size:.78rem}
+    .dot{width:8px;height:8px;border-radius:50%;background:#f46ab5}.dot:nth-child(2){background:#ffd66b}.dot:nth-child(3){background:#57e3ef}
+    .browser-url{margin-left:10px;padding:5px 10px;border-radius:8px;background:#071329;flex:1}
+    .site-preview{padding:25px;background:linear-gradient(140deg,#21164b,#0b2448 65%,#103b55);min-height:350px}
+    .site-head{display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:800}
+    .pill{border:1px solid #5d7aa6;border-radius:999px;padding:5px 10px;font-size:.72rem;color:#c8ddf8}
+    .site-preview h2{font-size:2rem;line-height:1.1;margin:32px 0 12px}
+    .site-preview p{color:#c7d4ec;max-width:360px}
+    .preview-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
+    .stat{padding:12px;background:#ffffff0b;border:1px solid #ffffff19;border-radius:13px}
+    .stat strong{display:block;color:var(--cyan);font-size:1.15rem}
+    .stat small{color:#bdcce5}
+    section{padding:68px 0}
+    .section-head{max-width:760px;margin-bottom:30px}
+    .section-head h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;letter-spacing:-.03em;margin:12px 0}
+    .section-head p{color:var(--muted);font-size:1.04rem}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,#122648,#0b1832)}
+    .icon{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;background:#1c3a60;font-size:1.35rem;margin-bottom:18px}
+    .card h3{font-size:1.12rem;margin-bottom:8px}
+    .card p{color:var(--muted);margin:0;font-size:.96rem}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:step}
+    .step{padding:22px;border-radius:18px;border:1px solid var(--line);background:#0e1e3a;counter-increment:step}
+    .step:before{content:"0" counter(step);display:block;color:var(--gold);font-weight:900;font-size:1.3rem;margin-bottom:18px}
+    .step p{color:var(--muted);font-size:.93rem;margin:0}
+    .step h3{margin-bottom:8px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+    .domain-list{display:grid;gap:12px}
+    .domain-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 17px;border-radius:14px;border:1px solid var(--line);background:#0e1e3a}
+    .domain-row small{display:block;color:var(--muted)}
+    .domain-row code{color:var(--cyan);font-size:.92rem;overflow-wrap:anywhere}
+    .checklist{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:12px}
+    .checklist li{color:#d5e0f3}
+    .checklist li:before{content:"✓";color:var(--green);font-weight:900;margin-right:10px}
+    .demo-area{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}
+    .form-panel,.preview-panel{border:1px solid var(--line);border-radius:var(--radius);background:#0e1e3a;padding:24px}
+    .form-panel label{display:block;font-size:.9rem;font-weight:700;color:#d5e0f3;margin:13px 0 6px}
+    .form-panel input,.form-panel select,.form-panel textarea{width:100%;border:1px solid #3a5681;background:#071329;color:#fff;border-radius:11px;padding:11px 12px}
+    .form-panel textarea{min-height:90px;resize:vertical}
+    .form-panel .note{font-size:.82rem;color:#9fb2d1;margin:12px 0 0}
+    .preview-panel{background:linear-gradient(145deg,#142b52,#0c1833)}
+    .preview-panel h3{font-size:1.6rem;margin:12px 0}
+    .preview-item{padding:12px 0;border-bottom:1px solid #29436b}
+    .preview-item b{display:block;color:var(--cyan);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
+    .preview-item span{color:#d9e4f6}
+    .sample-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+    .sample-tags span{font-size:.78rem;padding:6px 10px;border-radius:999px;background:#203b64;color:#d9e7fb}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .price-card{position:relative;padding:25px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#122648,#0b1832);display:flex;flex-direction:column}
+    .price-card.featured{border-color:var(--pink);box-shadow:0 18px 50px #ec489922}
+    .price-card .price{font-size:2.25rem;font-weight:900;letter-spacing:-.04em;margin:12px 0}
+    .price-card .price small{font-size:.85rem;color:var(--muted);font-weight:600;letter-spacing:0}
+    .price-card ul{padding-left:20px;color:#d5e0f3;flex:1}
+    .price-card li{margin:8px 0}
+    .price-card .btn{margin-top:14px}
+    .price-note{color:var(--muted);font-size:.88rem;margin-top:18px}
+    .confidence{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+    .confidence div{padding:18px;border:1px solid #31527d;border-radius:16px;background:#0d1c37}
+    .confidence strong{display:block;color:var(--cyan);margin-bottom:5px}
+    .confidence span{color:var(--muted);font-size:.9rem}
+    .cta{padding:36px;border-radius:26px;background:linear-gradient(110deg,#6f1f93,#253f9d 55%,#087c8d);display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .cta h2{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.08;margin-bottom:10px}
+    .cta p{color:#e2e8ff;margin:0}
+    footer{padding:30px 0;border-top:1px solid #243a60;color:#94a8ca;font-size:.9rem}
+    .footer-row{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .disclaimer{font-size:.78rem;color:#8298bc;margin-top:14px}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;gap:35px;padding-top:55px}.hero-visual{max-width:680px}.grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.split,.demo-area{grid-template-columns:1fr}}
+    @media(max-width:620px){.nav{min-height:66px}.menu-btn{display:block}.navlinks{display:none;position:absolute;top:66px;left:0;right:0;padding:18px 4%;background:#071329;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.hero{padding-top:42px}.grid,.steps{grid-template-columns:1fr}section{padding:52px 0}.cta{padding:26px;align-items:flex-start;flex-direction:column}.site-preview{padding:20px}.preview-stats{grid-template-columns:1fr 1fr}.browser{transform:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .step,.flow>div{background:linear-gradient(145deg,#122648,#0b1b35);border:1px solid var(--line);border-radius:18px;padding:22px}
+    .step>span{display:inline-block;color:var(--cyan);font-weight:900;font-size:1.2rem;margin-bottom:12px}
+    .step p,.card p,.step li{color:var(--muted)}
+    .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:12px}
+    .flow>div{text-align:center}.flow small{display:block;color:var(--muted);margin-top:5px}
+    .flow>b{color:var(--cyan);font-size:1.5rem}
+    .note{color:var(--muted);font-size:.92rem;margin-top:22px}
+    .pricing .price{font-size:2.35rem;font-weight:900;letter-spacing:-.04em;margin:12px 0}
+    .pricing .price small{font-size:.85rem;color:var(--muted);font-weight:600;letter-spacing:0}
+    .pricing ul,.card ul{padding-left:20px;color:var(--muted)}
+    .pricing li,.card li{margin:8px 0}
+    .featured{border-color:var(--pink);box-shadow:0 0 0 1px #f46ab533,0 20px 60px #0002}
+    .faq{display:grid;gap:12px}
+    .faq details{border:1px solid var(--line);border-radius:15px;background:#10213e;padding:17px 20px}
+    .faq summary{font-weight:800;cursor:pointer}
+    .faq details p{color:var(--muted);margin:12px 0 0}
+    @media(max-width:850px){.steps{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:1fr;text-align:center}.flow>b{transform:rotate(90deg)}}
+    @media(max-width:560px){.steps{grid-template-columns:1fr}}
+
+
+    /* Pricing cards: keep price, inclusions and CTA aligned without overflow */
+    .grid.pricing{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+    .grid.pricing>.card{min-width:0;display:flex;flex-direction:column;height:100%;overflow-wrap:anywhere}
+    .grid.pricing>.card h3{min-height:2.6em}
+    .grid.pricing>.card .price{white-space:nowrap;line-height:1.15}
+    .grid.pricing>.card ul{flex:1 1 auto;margin-bottom:22px}
+    .grid.pricing>.card .btn{align-self:flex-start;margin-top:auto;max-width:100%;white-space:normal;text-align:center}
+    .grid.pricing>.card.featured{transform:translateY(-8px)}
+    @media(max-width:850px){
+      .grid.pricing{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .grid.pricing>.card.featured{transform:none}
+    }
+    @media(max-width:560px){
+      .grid.pricing{grid-template-columns:minmax(0,1fr)}
+      .grid.pricing>.card h3{min-height:0}
+      .grid.pricing>.card .btn{align-self:stretch}
+    }
+
+
+    /* Compact, stable three-step pricing layout */
+    .grid.pricing{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:stretch}
+    .grid.pricing>.card{display:grid;grid-template-columns:minmax(140px,1fr) minmax(0,2.2fr) auto;align-items:center;gap:8px 22px;padding:18px 22px;min-width:0;overflow-wrap:anywhere}
+    .grid.pricing>.card .pill{grid-column:1}
+    .grid.pricing>.card h3{grid-column:1;grid-row:2;margin:0}
+    .grid.pricing>.card .price{grid-column:1;grid-row:3;font-size:1.65rem;margin:0;white-space:nowrap}
+    .grid.pricing>.card ul{grid-column:2;grid-row:1 / span 3;margin:0;padding-left:20px}
+    .grid.pricing>.card .btn{grid-column:3;grid-row:1 / span 3;align-self:center;white-space:nowrap}
+    .grid.pricing>.card.featured{transform:none}
+    .form-demo-card{max-width:900px;margin:0 auto;padding:26px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#122648,#0b1832)}
+    .form-demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .form-demo-grid>div{min-width:0}
+    .form-demo-wide{grid-column:1/-1}
+    .form-demo-card label{display:block;font-weight:750;margin-bottom:7px}
+    .form-demo-card input,.form-demo-card select,.form-demo-card textarea{width:100%;min-width:0;padding:12px 14px;border-radius:12px;border:1px solid #38557d;background:#08172f;color:#fff}
+    .form-demo-card textarea{resize:vertical}
+    .form-demo-message{color:var(--muted);font-size:.9rem;margin:14px 0 0}
+    @media(max-width:700px){.grid.pricing>.card{grid-template-columns:minmax(0,1fr);gap:10px;padding:20px}.grid.pricing>.card .pill,.grid.pricing>.card h3,.grid.pricing>.card .price,.grid.pricing>.card ul,.grid.pricing>.card .btn{grid-column:1;grid-row:auto}.grid.pricing>.card .btn{white-space:normal;align-self:stretch}.form-demo-grid{grid-template-columns:1fr}.form-demo-wide{grid-column:auto}.form-demo-card{padding:18px}}
+
+
+    /* Mobile viewport containment: prevent any section from pushing the page sideways */
+    html,body{width:100%;max-width:100%;overflow-x:hidden}
+    body{min-width:0}
+    *,*:before,*:after{box-sizing:border-box}
+    img,svg,video,canvas,iframe{max-width:100%}
+    .wrap{width:min(var(--max),92%);max-width:100%;min-width:0}
+    section,.topbar,footer{max-width:100%;min-width:0}
+    .hero,.grid,.steps,.flow,.pricing-grid,.confidence,.demo-area,.split,.cta,.footer-row{min-width:0;max-width:100%}
+    .grid>* ,.steps>* ,.pricing-grid>* ,.confidence>* ,.demo-area>* ,.split>*{min-width:0}
+    h1,h2,h3,p,li,a,button{overflow-wrap:anywhere}
+    @media(max-width:700px){
+      .pricing-grid,.confidence,.demo-area,.split,.flow{grid-template-columns:minmax(0,1fr)!important}
+      .grid{grid-template-columns:minmax(0,1fr)!important}
+      .grid.pricing>.card{grid-template-columns:minmax(0,1fr)!important}
+      .grid.pricing>.card>*{grid-column:1!important;grid-row:auto!important;min-width:0}
+      .grid.pricing>.card .price{white-space:normal}
+      .grid.pricing>.card .btn{white-space:normal;width:100%}
+      .nav{gap:8px}
+      .brand{white-space:normal;font-size:.95rem}
+      .hero{grid-template-columns:minmax(0,1fr)!important}
+      .browser{transform:none;max-width:100%}
+      .site-preview{min-width:0}
+      .preview-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .cta{width:100%;min-width:0}
+    }
+
+
+    .form-result-box{margin-top:22px;padding:20px;border:1px solid #3a648c;border-radius:16px;background:#08172f}
+    .result-heading{display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
+    .result-heading strong{font-size:1.2rem}
+    .result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .result-grid>div{min-width:0;padding:12px;border-radius:10px;background:#102344}
+    .result-grid b,.result-grid span{display:block;overflow-wrap:anywhere}
+    .result-grid b{font-size:.82rem;color:var(--muted);margin-bottom:5px}
+    .result-wide{grid-column:1/-1}
+    .result-note{font-size:.88rem;color:var(--muted);margin:14px 0 0}
+    @media(max-width:700px){.result-grid{grid-template-columns:minmax(0,1fr)}.result-wide{grid-column:1}}
+\n
+
+    /* Keep DIGITAL HOSTING centered inside its outlined badge */
+    .site-head .pill{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      white-space:normal;
+      line-height:1.2;
+      padding:10px 18px;
+      min-height:48px;
+      flex:0 0 auto;
+    }
+    .site-head{align-items:center}
+    @media(max-width:520px){
+      .site-head .pill{min-width:130px;max-width:46%;padding:9px 12px}
+    }
+
+
+    /* Package labels: centered, heading-like badges with breathing room */
+    #packages .card > .pill{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      width:fit-content;
+      max-width:100%;
+      min-height:42px;
+      margin:0 auto 18px;
+      padding:10px 24px;
+      border-radius:999px;
+      line-height:1.25;
+      white-space:normal;
+      font-size:.95rem;
+      font-weight:800;
+      letter-spacing:.04em;
+    }
+    #packages .card h3{text-align:center}
+    @media(max-width:520px){
+      #packages .card > .pill{min-width:130px;padding:10px 18px;margin-bottom:16px}
+    }
+
+
+    /* Pricing-card hierarchy: plan badge centered, then title and prominent price */
+    #packages .pricing-grid .price-card{
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+      min-width:0;
+    }
+    #packages .pricing-grid .price-card > .pill{
+      align-self:center;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      width:max-content;
+      max-width:100%;
+      min-width:132px;
+      margin:0 auto 16px;
+      padding:10px 22px;
+      line-height:1.2;
+      white-space:normal;
+      border-radius:999px;
+      font-weight:800;
+    }
+    #packages .pricing-grid .price-card > h3,
+    #packages .pricing-grid .price-card > .price,
+    #packages .pricing-grid .price-card > .sub{
+      text-align:center;
+    }
+    #packages .pricing-grid .price-card > h3{margin:0 0 12px}
+    #packages .pricing-grid .price-card > .price{
+      font-size:clamp(2rem,5vw,2.7rem);
+      font-weight:900;
+      line-height:1.12;
+      margin:0 0 12px;
+      letter-spacing:-.03em;
+    }
+    #packages .pricing-grid .price-card > .price small{
+      display:block;
+      font-size:.82rem;
+      font-weight:600;
+      letter-spacing:0;
+      margin-top:7px;
+    }
+    #packages .pricing-grid .price-card > .sub{margin:0 0 20px}
+
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="OJILZTAG.COM home">OJILZTAG<span>.COM</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navlinks">Menu</button>
+      <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+        <a href="#features">Features</a><a href="#packages">Packages</a><a href="#how">How it works</a><a href="#domains">Domains</a><a href="#demo">Preview</a>
+        <a class="btn btn-primary btn-small" href="#contact">Request a Platform</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div>
+        <span class="eyebrow">Plan · Build · Launch · Manage</span>
+        <h1>Every Event.<br><em>One Digital Platform.</em><br>Your Own Identity.</h1>
+        <p class="lead">OJILZTAG.COM helps organizations digitize events end-to-end—from event pages and registrations to databases, team workflows, communication, schedules, participant management, results, and reporting. From a small community gathering to a multi-stage professional event, configure the platform around your needs.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#demo">Explore the platform ↘</a>
+          <a class="btn btn-secondary" href="#contact">Discuss your requirements</a>
+        </div>
+        <div class="trustline"><span>Modular event workflows</span><span>Connected data & automation</span><span>Custom domains and mobile-friendly</span></div>
+      </div>
+      <div class="hero-visual" aria-label="Illustrative event website preview">
+        <div class="glow"></div>
+        <div class="browser">
+          <div class="browser-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i><div class="browser-url">myevent.ojilztag.com</div></div>
+          <div class="site-preview">
+            <div class="site-head"><span id="visualHosting">YOUR EVENT</span><span class="pill">DIGITAL HOSTING</span></div>
+            <h2 id="visualTitle">A stage for every talent.</h2>
+            <p id="visualDesc">A dedicated digital home for registrations, event details, participants, and event updates.</p>
+            <a class="btn btn-primary btn-small" href="#demo">Explore Event</a>
+            <div class="preview-stats">
+              <div class="stat"><strong>Forms & Data</strong><small>Custom fields</small></div>
+              <div class="stat"><strong>Dashboard</strong><small>Clear updates</small></div>
+              <div class="stat"><strong>Hosting</strong><small>Your event space</small></div>
+            <div class="stat"><strong>Bookings</strong><small>Requests & schedules</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">A flexible framework</span>
+          <h2>Everything your event needs, in one digital place.</h2>
+          <p>Start with the features your event needs. Add more as your event grows.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="icon">📝</div><h3>Custom Registration</h3><p>Build event-specific forms for teams, individuals, categories, contacts, and other required details.</p></article>
+          <article class="card"><div class="icon">👥</div><h3>Participant Management</h3><p>Organize entries and participant information with a workflow suited to your organizers.</p></article>
+          <article class="card"><div class="icon">🎨</div><h3>Your Hosting</h3><p>Use your organization name, logo, colors, banners, event imagery, and visual identity.</p></article>
+          <article class="card"><div class="icon">⚖️</div><h3>Judging & Scoring</h3><p>Configure forms, participant information, schedules, and workflows around your event requirements.</p></article>
+          <article class="card"><div class="icon">🏆</div><h3>Dashboard & Announcements</h3><p>Publish schedules, updates, winners, and result information on your event website.</p></article>
+          <article class="card"><div class="icon">📊</div><h3>Organizer Data</h3><p>Registration data can be organized in a dedicated Google Sheet for each organization.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="hosting-overview">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">MYEVENT HOSTING · Technical service</span>
+          <h2>Your event, hosted and managed in one digital place.</h2>
+          <p>Event website hosting, configurable forms, response collection, booking workflows, participant management, announcements, and reporting — planned as one connected service.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>Hosted Event Website</h3><p>Responsive event pages hosted on the default domain myevent.ojilztag.com, with event-specific URLs and branding.</p></article>
+          <article class="card"><h3>Forms & Response Data</h3><p>Collect registrations, booking requests, applications, survey responses, participant details, and other event-specific information.</p></article>
+          <article class="card"><h3>Organizer Management</h3><p>Organize participant lists, schedules, entries, status updates, attendance, results, and reports according to the selected package.</p></article>
+          <article class="card"><h3>Technical Setup</h3><p>Configuration, responsive layout, domain setup, access planning, testing, and organizer handover within the confirmed project scope.</p></article>
+          <article class="card"><h3>Upgrade Path</h3><p>Start with a simple event page and add advanced forms, workflows, custom domains, integrations, and management capabilities as needed.</p></article>
+          <article class="card"><h3>Scope & Transparency</h3><p>Hosting duration, storage, integrations, support, and third-party charges are confirmed in the proposal before launch.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Packages for every scale</span>
+          <h2>Choose a package that fits your event.</h2>
+          <p>Select a hosting and management package based on your event size, required forms, workflows, and technical features. Final scope is confirmed before work begins.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <span class="pill">Starter</span>
+            <h3>Basic Event Page</h3>
+            <div class="price">₹499 <small>starting price</small></div>
+            <p class="sub">Simple, clean, and ready to share.</p>
+            <ul><li>Event details page</li><li>Mobile-friendly layout</li><li>Basic registration link/form setup</li><li>OJILZTAG.COM subdomain option</li></ul>
+            <a class="btn btn-secondary" href="#contact">Ask about Starter</a>
+          </article>
+          <article class="price-card">
+            <span class="pill">Popular</span>
+            <h3>Custom Event</h3>
+            <div class="price">₹1,999 <small>starting price</small></div>
+            <p class="sub">A branded event site with tailored registration.</p>
+            <ul><li>Custom event branding and sections</li><li>HTML registration form setup</li><li>Google Sheet data workflow</li><li>Event categories and announcements</li><li>Subdomain setup</li></ul>
+            <a class="btn btn-primary" href="#contact">Ask about Custom</a>
+          </article>
+          <article class="price-card featured">
+            <span class="pill">Professional</span>
+            <h3>Advanced Platform</h3>
+            <div class="price">₹4,999 <small>starting price</small></div>
+            <p class="sub">For organizations needing a richer event management workflow.</p>
+            <ul><li>Expanded custom pages and forms</li><li>Participant management workflow</li><li>Judging / scoring feature planning</li><li>Dashboard and update sections</li><li>Custom domain connection assistance</li></ul>
+            <a class="btn btn-primary" href="#contact">Discuss Professional</a>
+          </article>
+        </div>
+        <p class="price-note">All packages use myevent.ojilztag.com as the default hosting domain. Higher packages add more pages, forms, workflows, event-management tools, reporting, and integrations. Custom domains, premium hosting, third-party services, and additional development may cost extra; scope and total price are confirmed before starting</p>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">From idea to launch</span>
+          <h2>A simple setup for your organization.</h2>
+          <p>We work with you to configure the event, then prepare its branded digital home.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>Share your event</h3><p>Tell us the event type, dates, schedule, and the information you need to collect from participants or attendees.</p></article>
+          <article class="step"><h3>Configure your site</h3><p>We set up the event pages, branding, registration fields, and selected features.</p></article>
+          <article class="step"><h3>Connect your domain</h3><p>The default event domain is myevent.ojilztag.com. Each event is hosted under this default domain; custom-domain upgrades can be added when required</p></article>
+          <article class="step"><h3>Launch & manage</h3><p>Share your website with participants and receive entries in your configured data workflow.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="domains">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow">A web address that fits your event</span>
+          <h2 style="font-size:clamp(2rem,4vw,3rem);line-height:1.1">Your event can have its own online identity.</h2>
+          <p class="lead">Choose a convenient OJILZTAG.COM subdomain, or ask about connecting a domain your organization owns.</p>
+          <ul class="checklist">
+            <li>Organization-specific event page and branding</li><li>You can purchase your own domain in your name; we can help connect it to your website</li>
+            <li>One shared platform template, configured per event</li>
+            <li>Separate registration data for each organization</li>
+            <li>Mobile-friendly design for participants and visitors</li>
+          </ul>
+        </div>
+        <div class="domain-list" aria-label="Example domains">
+          <div class="domain-row"><div><strong>Organization A</strong><small>Example subdomain</small></div><code>myevent.ojilztag.com/kannur-event</code></div>
+          <div class="domain-row"><div><strong>Organization B</strong><small>Example subdomain</small></div><code>myevent.ojilztag.com/kochi-event</code></div>
+          <div class="domain-row"><div><strong>Organization C</strong><small>Example custom domain</small></div><code>your-event-domain.com</code></div>
+          <p class="disclaimer">Domain examples are illustrative. Availability and setup depend on domain ownership and hosting configuration.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Interactive concept preview</span>
+          <h2>Imagine your event website.</h2>
+          <p>Change the sample details to preview how an event concept could be presented. This demo runs locally in your browser and does not submit or store information.</p>
+        </div>
+        <div class="demo-area">
+          <div class="form-panel">
+            <label for="eventName">Event Name</label>
+            <input id="eventName" value="Your Event">
+            <label for="eventType">Event Type</label>
+            <select id="eventType">
+              <option>Competition / Contest</option><option>Collection / Fundraising</option><option>Conference / Seminar</option><option>Festival / Cultural Event</option><option>Workshop / Training</option><option>Booking / Appointment</option><option>Ticketing / RSVP</option><option>Sports / Tournament</option><option>Community / Public Event</option><option>Corporate Event</option><option>Education / Admission</option><option>Volunteer / Membership</option><option>Survey / Feedback</option><option>Exhibition / Trade Fair</option><option>Other Event</option>
+            </select>
+            <label for="orgName">Organization Name</label>
+            <input id="orgName" value="Your Organization">
+            <label for="eventDescription">Short Description</label>
+            <textarea id="eventDescription">A hosted digital home for your event — registrations, information, bookings, participants, and updates.</textarea>
+            <label for="featureList">Features</label>
+            <input id="featureList" value="Registration, Information Collection, Booking, Reports">
+            <button class="btn btn-primary" type="button" id="applyPreview" style="margin-top:18px">Update Preview</button>
+            <p class="note">Concept preview only. Live registration, sheet integration, and domain connection require implementation and configuration.</p>
+          </div>
+          <div class="preview-panel">
+            <span class="eyebrow">Your event preview</span>
+            <h3 id="previewTitle">Your Event</h3>
+            <div class="preview-item"><b>Organization</b><span id="previewOrg">Your Organization</span></div>
+            <div class="preview-item"><b>Event type</b><span id="previewType">Conference / Seminar</span></div>
+            <div class="preview-item"><b>About the event</b><span id="previewDesc">A hosted digital home for your event — registrations, information, bookings, participants, and updates.</span></div>
+            <div class="preview-item"><b>Selected features</b><span id="previewFeatures">Registration, Information Collection, Booking, Reports</span></div>
+            <div class="sample-tags"><span>Responsive website</span><span>Custom branding</span><span>Event-specific form</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="form-demo">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Form and result demo</span>
+          <h2>Your Event: form, result, and response preview.</h2>
+          <p>Use this flexible event form for competitions, registrations, donations and collections, seminar or conference sign-ups, appointment and venue bookings, ticket/RSVP requests, workshops, surveys, memberships, volunteer intake, and other information-collection needs. Demo data stays in this browser only.</p>
+        </div>
+        <div class="form-demo-card">
+          <form id="sampleRegistration">
+            <div class="form-demo-grid">
+              <div><label for="demoFullName">Name / Contact person</label><input id="demoFullName" placeholder="Enter full name" required></div>
+              <div><label for="demoPhone">Mobile number</label><input id="demoPhone" type="tel" placeholder="Enter mobile number" required></div>
+              <div><label for="demoEmail">Email (optional)</label><input id="demoEmail" type="email" placeholder="name@example.com"></div>
+              <div><label for="demoCategory">Purpose / Category</label><select id="demoCategory" required><option value="">Choose purpose</option><option>Competition entry</option><option>Seminar registration</option><option>Booking request</option><option>Donation / Collection</option><option>Workshop registration</option><option>Survey / Feedback</option><option>Volunteer / Membership</option><option>Other</option></select></div>
+              <div class="form-demo-wide"><label for="demoNotes">Additional details</label><textarea id="demoNotes" rows="3" placeholder="Team name, requirements, or notes"></textarea></div>
+            </div>
+            <button class="btn btn-primary" type="submit">Show Form Result</button>
+            <p id="demoFormMessage" class="form-demo-message" aria-live="polite">Demo only — no data will be sent or stored.</p>
+            <div id="formResultBox" class="form-result-box" hidden aria-live="polite">
+              <div class="result-heading"><span class="eyebrow">Form Result</span><strong>Your Event — submitted response</strong></div>
+              <div class="result-grid">
+                <div><b>Name</b><span id="resultName">—</span></div>
+                <div><b>Mobile</b><span id="resultPhone">—</span></div>
+                <div><b>Email</b><span id="resultEmail">—</span></div>
+                <div><b>Purpose</b><span id="resultCategory">—</span></div>
+                <div class="result-wide"><b>Details</b><span id="resultNotes">—</span></div>
+              </div>
+              <p class="result-note">This is a local demo result only. In a live event, authorized staff can review responses in a dashboard and connect them to a spreadsheet or database, confirmations, notifications, booking lists, participant records, collection summaries, and reports as required.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="event-use-cases">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">One platform · Many event types</span>
+          <h2>One event platform for different real-world needs.</h2>
+          <p>“Your Event” എന്ന ആശയത്തിൽ ഓരോ സംഘാടകനും ആവശ്യത്തിന് അനുസരിച്ച് form fields, response results, access permissions, and workflows തിരഞ്ഞെടുക്കാം.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>Competitions & Festivals</h3><p>Participant/team entry, categories, rules, schedules, judging, scores, results, and certificates.</p></article>
+          <article class="card"><h3>Seminars & Conferences</h3><p>Attendee registration, speaker details, sessions, RSVP, attendance, and feedback.</p></article>
+          <article class="card"><h3>Bookings & Appointments</h3><p>Booking requests, preferred dates/times, capacity, confirmation status, and booking lists.</p></article>
+          <article class="card"><h3>Collections & Campaigns</h3><p>Donor/contact information, collection purpose, pledge or contribution records, and summaries.</p></article>
+          <article class="card"><h3>Surveys & Information Forms & Data</h3><p>Custom questions, feedback, applications, requests, and structured response collection.</p></article>
+          <article class="card"><h3>Community & Organization Events</h3><p>Volunteer/member sign-ups, team coordination, announcements, check-in, and reports.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="confidence">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Clear process · No surprises</span>
+          <h2>Build with confidence.</h2>
+          <p>നിങ്ങളുടെ event-ിന് അനുയോജ്യമായ package, features, delivery scope എന്നിവ work തുടങ്ങുന്നതിന് മുമ്പ് വ്യക്തമായി confirm ചെയ്യും.</p>
+        </div>
+        <div class="confidence">
+          <div><strong>Transparent Pricing</strong><span>Package inclusions and any extra costs are discussed upfront.</span></div>
+          <div><strong>Your Domain, Your Ownership</strong><span>നിങ്ങൾ domain സ്വന്തം പേരിൽ purchase ചെയ്യാം. Domain ownership നിങ്ങളുടേതായിരിക്കും.</span></div>
+          <div><strong>Personalized Setup</strong><span>നിങ്ങളുടെ event requirements അനുസരിച്ച് customization ചെയ്യാം.</span></div>
+        </div>
+        <p class="price-note">Payment and project confirmation details will be shared directly with you before the work is initiated. This page does not collect payment details.</p>
+      </div>
+    </section>
+
+
+    <section id="framework">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">The digital framework</span>
+          <h2>One event template. Each organization gets its own event website.</h2>
+          <p>ഒരു common, reusable website framework ഉപയോഗിച്ച് ഓരോ organization-നും branding, event details, registration fields, information collection, domain എന്നിവയോടുകൂടിയ സ്വന്തം event website ഒരുക്കാം.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>🏷️ Organization-specific branding</h3><p>ഓരോ event-നും സ്വന്തം title, logo, colors, banner, schedule, rules, contact details എന്നിവ ക്രമീകരിക്കാം.</p></article>
+          <article class="card"><h3>📝 Online registration</h3><p>Participants-ന് mobile-friendly registration form. Event ആവശ്യത്തിന് name, phone, email, category, team details തുടങ്ങിയ fields configure ചെയ്യാം.</p></article>
+          <article class="card"><h3>📊 Separate participant records</h3><p>ഓരോ organization-ന്റെയും submissions വേറിട്ട Google Spreadsheet-ലേക്ക് route ചെയ്യാം. Authorized organizer-ന് sheet access നൽകാം.</p></article>
+          <article class="card"><h3>🌐 Domain choices</h3><p>Default hosting domain myevent.ojilztag.com ആണ്. Upgrade അനുസരിച്ച് custom domain, additional hosting features, and integrations configure ചെയ്യാം.</p></article>
+          <article class="card"><h3>📣 Event information</h3><p>Event overview, eligibility, categories, important dates, rules, venue, FAQs, announcements എന്നിവ ഒരിടത്ത് publish ചെയ്യാം.</p></article>
+          <article class="card"><h3>🤝 Organizer handover</h3><p>Final scope അനുസരിച്ച് organizer-ന് website link, spreadsheet access, update instructions എന്നിവ നൽകും.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">How it works</span>
+          <h2>From event idea to live registration</h2>
+          <p>Simple onboarding — ആവശ്യങ്ങൾ share ചെയ്യുക, framework configure ചെയ്യുക, publish ചെയ്ത് registrations സ്വീകരിക്കുക.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><span>01</span><h3>Share your event brief</h3><p>Organization name, event type, date, venue, categories, rules, branding assets, required form fields എന്നിവ നൽകുക.</p></article>
+          <article class="step"><span>02</span><h3>Choose your package</h3><p>Basic event page മുതൽ advanced customized setup വരെ. Scope, timeline, final amount എന്നിവ payment-ന് മുമ്പ് confirm ചെയ്യും.</p></article>
+          <article class="step"><span>03</span><h3>Configure & review</h3><p>Website content, registration form, domain, and spreadsheet workflow setup ചെയ്ത് preview review ചെയ്യാം.</p></article>
+          <article class="step"><span>04</span><h3>Publish & manage</h3><p>Approved website live ആക്കും. Participants register ചെയ്യും; organizer submissions access ചെയ്ത് event manage ചെയ്യും.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="roles">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Built around the event team</span>
+          <h2>Participants, organizers, and the platform</h2>
+          <p>ഓരോ role-നും വ്യക്തമായ flow — public registration മുതൽ organizer-side data access വരെ.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>For participants</h3><ul><li>Event details and rules view ചെയ്യുക</li><li>Mobile-ൽ registration submit ചെയ്യുക</li><li>Confirmation / contact instructions കാണുക</li><li>Official event updates പരിശോധിക്കുക</li></ul></article>
+          <article class="card"><h3>For organizers</h3><ul><li>Own event page and branding</li><li>Registration data in a dedicated sheet</li><li>Participant list review and export through Sheets</li><li>Event information update support as agreed</li></ul></article>
+          <article class="card"><h3>For OJILZTAG.COM</h3><ul><li>Reusable central template</li><li>Organization-specific configuration</li><li>Domain and form setup support</li><li>Scope-based technical assistance</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="data-flow">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Data flow & access</span>
+          <h2>Each event’s submissions go to its own destination</h2>
+          <p>വ്യത്യസ്ത organizations-ന്റെ participant data വേർതിരിച്ച് കൈകാര്യം ചെയ്യുക എന്നതാണ് framework-ന്റെ പ്രധാന ആശയം.</p>
+        </div>
+        <div class="flow">
+          <div><strong>Participant</strong><small>Event website form</small></div><b aria-hidden="true">→</b>
+          <div><strong>Validated request</strong><small>Central form handler</small></div><b aria-hidden="true">→</b>
+          <div><strong>Event-specific Sheet</strong><small>Organizer-authorized access</small></div>
+        </div>
+        <p class="note">Privacy & security: Public registration forms should collect only necessary information. Access permissions, data retention, validation, spam protection, and any third-party service requirements are confirmed during setup. Features depend on the selected package and final technical scope.</p>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Packages & starting prices</span>
+          <h2>Choose the right level for your event</h2>
+          <p>താഴെയുള്ളത് indicative starting price ആണ്. Exact quotation event scope, customization, domain, hosting, and integrations അനുസരിച്ച് confirm ചെയ്യും.</p>
+        </div>
+        <div class="grid pricing">
+          <article class="card"><span class="pill">Starter</span><h3>Basic Event Page</h3><div class="price">₹499 <small>starting</small></div><ul><li>Single-page event information</li><li>Basic branding and contact details</li><li>WhatsApp inquiry / request link</li><li>Suitable for simple event promotion</li></ul><a class="btn btn-secondary" href="https://wa.me/919946670571?text=MYEVENT%20HOSTING" target="_blank" rel="noopener noreferrer">Request Starter</a></article>
+          <article class="card featured"><span class="pill">Popular</span><h3>Custom Event</h3><div class="price">₹1,999 <small>starting</small></div><ul><li>Customized event website</li><li>Registration form configuration</li><li>Event-specific data collection and reporting workflow</li><li>Rules, categories, dates, and updates</li><li>Subdomain setup assistance</li></ul><a class="btn btn-primary" href="https://wa.me/919946670571?text=MYEVENT%20HOSTING" target="_blank" rel="noopener noreferrer">Request Custom</a></article>
+          <article class="card"><span class="pill">Professional</span><h3>Advanced Platform</h3><div class="price">₹4,999 <small>starting</small></div><ul><li>Advanced layout and custom sections</li><li>Expanded form and workflow configuration</li><li>Custom-domain connection assistance</li><li>Enhanced organizer handover</li><li>Additional features scoped separately</li></ul><a class="btn btn-secondary" href="https://wa.me/919946670571?text=MYEVENT%20HOSTING" target="_blank" rel="noopener noreferrer">Request Professional</a></article>
+        </div>
+        <p class="note">Domain purchase, premium hosting, paid third-party services, payment gateway integration, and extra custom development may cost extra. Final deliverables, timeline, and total price will be shared and approved before work begins.</p>
+      </div>
+    </section>
+
+    <section id="domains">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Domain ownership</span>
+          <h2>Your event. Your domain. Your ownership.</h2>
+          <p>Customer-ന് സ്വന്തം പേരിൽ domain വാങ്ങാം. OJILZTAG.COM domain connect ചെയ്യാനും DNS setup guide ചെയ്യാനും സഹായിക്കും. Alternatively, available subdomain option തിരഞ്ഞെടുക്കാം.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>Custom domain</h3><p>ഉദാഹരണം: <strong>www.youreventname.com</strong> — domain customer-ന്റെ പേരിൽ register ചെയ്യാം; renewal and ownership customer-ന്റെ control-ൽ തുടരും.</p></article>
+          <article class="card"><h3>Subdomain</h3><p>ഉദാഹരണം: <strong>myevent.ojilztag.com</strong> — availability and package scope അനുസരിച്ച് setup ചെയ്യാം.</p></article>
+          <article class="card"><h3>Clear setup & payment</h3><p>Scope, deliverables, additional charges, and payment details എന്നിവ മുൻകൂട്ടി share ചെയ്യും. ഈ page payment collect ചെയ്യുന്നില്ല; payment instructions project confirmation സമയത്ത് നൽകും.</p></article>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="event-types">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">For every kind of event</span>
+          <h2>Digitize registrations, information collection, and management for all kinds of events.</h2>
+          <p>ഒരു event type-ൽ മാത്രം പരിമിതമല്ല. വിവിധ sectors-നും event formats-നും adaptable ആയ modular platform concept.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>🎭 Arts, culture & events</h3><p>Festivals, school/college programs, sports tournaments, quizzes, auditions, conferences, workshops, and community events.</p></article>
+          <article class="card"><h3>🏢 Corporate & professional</h3><p>Conferences, seminars, workshops, exhibitions, product launches, employee events, business networking.</p></article>
+          <article class="card"><h3>🤝 Community & social</h3><p>Associations, clubs, residents’ groups, charity programs, public campaigns, reunions, local celebrations.</p></article>
+          <article class="card"><h3>🎓 Education & institutions</h3><p>Admissions-related events, student programs, academic conferences, training sessions, campus activities.</p></article>
+          <article class="card"><h3>🛍️ Trade & public programs</h3><p>Trade fairs, market days, vendor registrations, public consultations, community surveys, volunteer drives.</p></article>
+          <article class="card"><h3>🗓️ Multi-day & multi-stage</h3><p>Series of events, rounds, venues, sessions, teams, schedules, and event-specific participant journeys.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="modules">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Modular platform</span>
+          <h2>Start simple. Add modules when you need them.</h2>
+          <p>Core package-ൽ ആവശ്യമായ അടിസ്ഥാന കാര്യങ്ങൾ; advanced integrations, automation, and custom workflows scope അനുസരിച്ച് add-on ആയി.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>Event website & CMS</h3><p>Landing pages, event pages, schedules, venue maps, FAQs, notices, sponsor listings, media galleries.</p></article>
+          <article class="card"><h3>Registration & ticketing</h3><p>Participant, team, attendee, vendor, volunteer, or speaker forms; ticket types and check-in workflows where scoped.</p></article>
+          <article class="card"><h3>Database & records</h3><p>Event-specific data destinations, structured records, exports, and integrations with approved data sources.</p></article>
+          <article class="card"><h3>Workflow automation</h3><p>Registration acknowledgements, status updates, reminders, task routing, and notifications through supported services.</p></article>
+          <article class="card"><h3>Team & role access</h3><p>Organizer, coordinator, reviewer, judge, volunteer, and admin access patterns according to requirements.</p></article>
+          <article class="card"><h3>Reports & insights</h3><p>Registration counts, category summaries, attendance, scores, feedback, and operational dashboards as scoped.</p></article>
+          <article class="card"><h3>Judging & results</h3><p>Criteria, score entry, review steps, leaderboards, result publication, and certificates for eligible event formats.</p></article>
+          <article class="card"><h3>Communication</h3><p>Email, WhatsApp request links, and supported messaging integrations for inquiries, reminders, and event updates.</p></article>
+          <article class="card"><h3>Payments & finance</h3><p>Optional payment gateway, registration fees, receipts, and payment status workflows, subject to provider approval and separate scope.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Platform architecture concept</span>
+          <h2>One managed framework. Multiple organizations. Separate data spaces.</h2>
+          <p><strong>myevent.ojilztag.com</strong> is the default hosting domain for the MYEVENT HOSTING platform. Event pages, forms, bookings, and management workflows are configured under this domain; custom-domain options can be added as an upgrade.</p>
+        </div>
+        <div class="flow">
+          <div><strong>Organization / Event</strong><small>Hosting, configuration, roles</small></div><b aria-hidden="true">→</b>
+          <div><strong>Event application</strong><small>Website, forms, workflows</small></div><b aria-hidden="true">→</b>
+          <div><strong>Connected data</strong><small>Database, reports, automation</small></div>
+        </div>
+        <p class="note">The final architecture may use a shared application with tenant separation or a dedicated deployment, depending on security, scale, data ownership, and budget. Database engines, external APIs, and automation services are selected during technical discovery—not assumed to be included in every package.</p>
+      </div>
+    </section>
+
+    <section id="public-input">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Public participation & feedback</span>
+          <h2>Collect useful information from the public, responsibly.</h2>
+          <p>Event-related public inputs can be gathered through configured forms and routed into review workflows.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>Public registrations</h3><p>Attendee, participant, team, vendor, volunteer, speaker, or sponsor inquiry forms.</p></article>
+          <article class="card"><h3>Feedback & surveys</h3><p>Post-event feedback, polls, suggestions, evaluation forms, and community input collection.</p></article>
+          <article class="card"><h3>Moderation & consent</h3><p>Collect only necessary data, show appropriate notices, restrict access, and define retention and review rules.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="package-guide">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">Pricing approach</span>
+          <h2>Attractive entry packages + custom scale-up</h2>
+          <p>Transparent starting tiers help customers begin affordably. Custom requirements are estimated separately so each organization pays for the modules it actually needs.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>Launch — from ₹499</h3><p>Simple event information page, contact/request link, basic branding.</p></article>
+          <article class="card"><h3>Organize — from ₹1,999</h3><p>Customized event site, registration form, event-specific spreadsheet workflow, subdomain option.</p></article>
+          <article class="card"><h3>Professional — from ₹4,999</h3><p>Expanded pages and workflows, domain connection assistance, enhanced organizer handover.</p></article>
+          <article class="card"><h3>Custom / Integrated</h3><p>Database integrations, automation, multiple roles, dashboards, payment or messaging integrations, multi-event operations: quote based on scope.</p></article>
+        </div>
+        <p class="note">Prices are illustrative starting prices and may change. Domain registration, hosting, paid APIs, transaction fees, third-party subscriptions, data migration, and custom development may be additional. Written scope and final quote are confirmed before payment.</p>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head"><span class="eyebrow">FAQ</span><h2>Quick answers</h2></div>
+        <div class="faq">
+          <details><summary>Is this only for events?</summary><p>No. The concept covers cultural, educational, corporate, community, public, sports, and professional events, subject to configured modules.</p></details><details><summary>Can it connect to databases and automate tasks?</summary><p>Yes, integrations and automation can be planned. Exact databases, APIs, workflows, access controls, and recurring costs are determined during discovery and quoted as part of the scope.</p></details><details><summary>Can every organization have a separate website?</summary><p>Yes. The shared framework can be configured with organization-specific content, branding, event settings, and a separate registration destination.</p></details>
+          <details><summary>Will registration data be shared between organizations?</summary><p>The intended setup keeps each organization’s registrations in its own spreadsheet. Access is granted only to authorized people as agreed.</p></details>
+          <details><summary>Can we use our own domain?</summary><p>Yes. You can purchase the domain in your own name and request connection assistance. Domain and related service costs may be additional.</p></details>
+          <details><summary>Does every package include online payment?</summary><p>No. Payment gateway integration is not implied by the listed starting packages. It must be requested, scoped, and quoted separately.</p></details>
+          <details><summary>Are the listed prices final?</summary><p>They are starting prices, not guaranteed final quotes. Final pricing depends on requirements and is confirmed before payment.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="cta">
+          <div><h2>Ready to digitize your events?</h2><p>നിങ്ങളുടെ organization, team, association, institution, അല്ലെങ്കിൽ business-ന്റെ event operations digital ആക്കാം. Share your requirements; we’ll map the right modules and package.</p></div>
+          <a class="btn btn-primary" href="https://wa.me/919946670571?text=MYEVENT%20HOSTING" target="_blank" rel="noopener noreferrer">WhatsApp OJILZTAG.COM ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-row"><span>© <strong>OJILZTAG.COM</strong> · Digital Event Hosting & Digital Management Setup</span><span>Plan · Configure · Host · Manage</span></div>
+      <p class="disclaimer">This page presents a service concept. Package prices are starting prices. Final features, domain/hosting costs, integrations, and delivery scope are confirmed before project start.</p>
+    </div>
+  </footer>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    function updatePreview(){
+      const name = $('eventName').value.trim() || 'Your Event';
+      const org = $('orgName').value.trim() || 'Your Organization';
+      const type = $('eventType').value;
+      const desc = $('eventDescription').value.trim() || 'A digital home for your event.';
+      const features = $('featureList').value.trim() || 'Custom event features';
+      $('previewTitle').textContent = name;
+      $('previewOrg').textContent = org;
+      $('previewType').textContent = type;
+      $('previewDesc').textContent = desc;
+      $('previewFeatures').textContent = features;
+      $('visualHosting').textContent = org.toUpperCase();
+      $('visualTitle').textContent = name;
+      $('visualDesc').textContent = desc;
+    }
+    $('applyPreview').addEventListener('click', updatePreview);
+    ['eventName','eventType','orgName','eventDescription','featureList'].forEach(id => $(id).addEventListener('input', updatePreview));
+    const menuBtn = $('menuBtn'), nav = $('navlinks');
+    menuBtn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false');
+    }));
+    updatePreview();
+  </script>
+
+<script>
+  const sampleRegistration = document.getElementById('sampleRegistration');
+  if (sampleRegistration) {
+    sampleRegistration.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const values = {
+        resultName: document.getElementById('demoFullName').value.trim(),
+        resultPhone: document.getElementById('demoPhone').value.trim(),
+        resultEmail: document.getElementById('demoEmail').value.trim() || 'Not provided',
+        resultCategory: document.getElementById('demoCategory').value,
+        resultNotes: document.getElementById('demoNotes').value.trim() || 'No additional details'
+      };
+      Object.entries(values).forEach(([id, value]) => {
+        document.getElementById(id).textContent = value;
+      });
+      document.getElementById('formResultBox').hidden = false;
+      document.getElementById('demoFormMessage').textContent =
+        'Preview generated. No information was transmitted or stored.';
+    });
+  }
+</script>
+
+</body>
+</html>
