@@ -457,7 +457,7 @@
       <a class="brand" href="#top" aria-label="OJILZTAG.COM home">OJILZTAG<span>.COM</span></a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navlinks">Menu</button>
       <nav class="navlinks" id="navlinks" aria-label="Main navigation">
-        <a href="#features">Features</a><a href="#packages">Packages</a><a href="#how">How it works</a><a href="#domains">Domains</a><a href="#demo">Preview</a>
+        <a href="#features">Features</a><a href="#packages">Packages</a><a href="#hosting-overview">How it works</a><a href="#domains">Domains</a><a href="#modules">Preview</a>
         <a class="btn btn-primary btn-small" href="#contact">Request a Platform</a>
       </nav>
     </div>
@@ -470,7 +470,7 @@
         <h1>Every Event.<br><em>One Digital Platform.</em><br>Your Own Identity.</h1>
         <p class="lead">OJILZTAG.COM helps organizations digitize events end-to-end—from event pages and registrations to databases, team workflows, communication, schedules, participant management, results, and reporting. From a small community gathering to a multi-stage professional event, configure the platform around your needs.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#demo">Explore the platform ↘</a>
+          <a class="btn btn-primary" href="#modules">Explore the platform ↘</a>
           <a class="btn btn-secondary" href="#contact">Discuss your requirements</a>
         </div>
         <div class="trustline"><span>Modular event workflows</span><span>Connected data & automation</span><span>Custom domains and mobile-friendly</span></div>
@@ -483,7 +483,7 @@
             <div class="site-head"><span id="visualHosting">YOUR EVENT</span><span class="pill">DIGITAL HOSTING</span></div>
             <h2 id="visualTitle">A stage for every talent.</h2>
             <p id="visualDesc">A dedicated digital home for registrations, event details, participants, and event updates.</p>
-            <a class="btn btn-primary btn-small" href="#demo">Explore Event</a>
+            <a class="btn btn-primary btn-small" href="#modules">Explore Event</a>
             <div class="preview-stats">
               <div class="stat"><strong>Forms & Data</strong><small>Custom fields</small></div>
               <div class="stat"><strong>Dashboard</strong><small>Clear updates</small></div>
@@ -690,10 +690,6 @@
       }));
     }
     updatePreview();
-    const mobileTopButton = $('mobileTopButton');
-    if (mobileTopButton) {
-      mobileTopButton.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
-    }
   </script>
 <script>
   const sampleRegistration = document.getElementById('sampleRegistration');
@@ -718,5 +714,15 @@
 </script>
 
   <button class="mobile-top-button" id="mobileTopButton" type="button" aria-label="Scroll to top"><span aria-hidden="true">↑</span> Top</button>
+  <script>
+    (function(){
+      const button = document.getElementById("mobileTopButton");
+      if (!button) return;
+      button.addEventListener("click", function(){
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({top: 0, behavior: reducedMotion ? "auto" : "smooth"});
+      });
+    })();
+  </script>
 </body>
 </html>
